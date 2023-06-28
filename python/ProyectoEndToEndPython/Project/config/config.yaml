@@ -1,0 +1,11 @@
+mongo_db:
+  connection_string: "mongodb+srv://oliverproace:134679@cluster0.mxd2gty.mongodb.net/?retryWrites=true&w=majority"
+
+cloud_storage:
+  credentials: "/user/app/ProyectoEndToEndPython/Project/credentials/chatmine-388722-fe3a5395ec1b.json"
+  
+mysql:
+  host: "192.168.1.16"
+  user: "root"
+  pass: "root"
+  port: "3310"

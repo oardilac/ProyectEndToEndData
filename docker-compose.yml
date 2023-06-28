@@ -1,0 +1,32 @@
+services:
+  mysql:
+    build: ./mysql/
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=retail_db
+    ports:
+      - '3310:3306'
+    volumes: 
+      - ./mysqldata:/mysql/data
+    env_file: 
+      - ./mysql/variables.env
+
+  jupyter:
+    build: ./python
+    restart: always
+    ports:
+      - "8200:8888"
+      - "5100:5000"
+      - "5110:5010"
+      - "8210:8080"
+      - "8000:8000"
+    entrypoint:
+      jupyter lab --ip='0.0.0.0' --port=8888 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password=''
+    volumes: 
+      - ./python:/user/app
+      - ./dags:/root/airflow/dags
+      
+volumes:
+  mysqldata:
+  mongodata:
